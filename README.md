@@ -15,19 +15,15 @@ In this tutorial you'll learn
 
 ## Prerequisites
 
-Before you start the tutorial you must set up a Kubernetes environment with Knative and Tekton installed.
+Before you start the tutorial you must set up a OpenShift environment with Tekton installed.
 
-* [Install the CLIs to manage a cluster](https://cloud.ibm.com/docs/containers?topic=containers-cs_cli_install#cs_cli_install_steps)
+Follow [this guide on installing OpenShift Pipelines](https://github.com/openshift/pipelines-tutorial/blob/master/install-operator.md)
 
-* [Create a standard Kubernetes cluster in IBM Kubernetes Service](https://cloud.ibm.com/docs/containers?topic=containers-clusters#clusters_ui_standard)
+Create a route for the OpenShift registry if you have not done so already.
 
-    **Note**:  The managed Knative add-on requires Kubernetes version 1.16 or later.
-
-* [Create a private container registry in IBM Container Service](https://cloud.ibm.com/docs/services/Registry?topic=registry-registry_setup_cli_namespace#registry_setup_cli_namespace)
-
-* [Install Knative in your cluster using the managed Knative add-on](https://cloud.ibm.com/docs/containers?topic=containers-knative_tutorial#knative_setup)
-
-    **Note**:  The managed Knative add-on also installs Tekton.
+```console
+oc patch configs.imageregistry.operator.openshift.io/cluster --patch '{"spec":{"defaultRoute":true}}' --type=merge
+```
 
 ## Estimated time
 
