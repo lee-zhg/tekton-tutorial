@@ -22,10 +22,11 @@ spec:
       args:
         - "-i"
         - "-e"
-        - "s;__IMAGE__;$(params.imageUrl):$(params.imageTag);g"
+        - "s;__IMAGE__;$(inputs.params.imageUrl):$(inputs.params.imageTag);g"
         - "-e"
-        - "s;__DIGEST__;$(params.imageDigest);g"
-        - "$(workspaces.git-source.path)/$(params.pathToYamlFile)"    - name: run-kubectl
+        - "s;__DIGEST__;$(inputs.params.imageDigest):$(inputs.params.imageTag);g"
+        - "/workspace/git-source/$(inputs.params.pathToYamlFile)"
+    - name: run-kubectl
       image: lachlanevenson/k8s-kubectl
       command: ["kubectl"]
       args:
