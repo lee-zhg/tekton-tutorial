@@ -11,9 +11,9 @@ spec:
         name: picalc-git
   params:
     - name: pathToYamlFile
-      value: "knative/picalc.yaml"
+      value: "kubernetes/picalc.yaml"
     - name: imageUrl
-      value: <REGISTRY>/<NAMESPACE>/picalc
+      value: <REGISTRY>/default/picalc
     - name: imageTag
       value: "1.0"
   serviceAccountName: pipeline-account
